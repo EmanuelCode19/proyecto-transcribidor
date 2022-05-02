@@ -1,26 +1,17 @@
 const microfono = document.querySelector('#microfono')
 const escuchando = document.querySelector('#escuchando')
 
-document.addEventListener('DOMContentLoaded', () => {
-    Notification
-       .requestPermission()
-       .then()
-})
+// document.addEventListener('DOMContentLoaded', () => {
+//     Notification
+//        .requestPermission()
+//        .then()
+// })
 
 
 microfono.addEventListener('click',ejecutarMicrofono);
 
-// function ejecutarMicrofono(e) {
-//     e.preventDefault()
-//     escuchando.classList.add('mostrar')
-//     setTimeout(() => {
-//                         escuchando.classList.remove('mostrar')
-//                     }, 3000);
-   
-// }
 
 function ejecutarMicrofono(e) {
-     e.preventDefault();
     const speechRecognition = webkitSpeechRecognition;
     const recognition = new speechRecognition()
 
@@ -31,13 +22,11 @@ function ejecutarMicrofono(e) {
     }
 
     recognition.onspeechend = function() {
-           if(Notification.permission === 'granted'){
-               new Notification('Termino la grabacion')
-           }
-
-
-
-        escuchando.textContent= 'se dejo de grabar'
+        //    if(Notification.permission === 'granted'){
+        //        new Notification('Termino la grabacion')
+        //    }
+             
+           escuchando.textContent= 'se dejo de grabar'
 
             setTimeout(() => {
                 escuchando.classList.remove('mostrar')
@@ -48,11 +37,12 @@ function ejecutarMicrofono(e) {
 
     recognition.onresult = function(e){
 
-        const {confidence, transcript} = e.results[0] [0];
-        const traduccion = document.querySelector('.traduccion')
-        const texto = document.createElement('p');
-        texto.textContent = '${transcript}'
+        console.log(e.results)
+        // const {confidence, transcript} = e.results[0] [0];
+        // const traduccion = document.querySelector('.traduccion')
+        // const texto = document.createElement('p');
+        // texto.textContent = '${transcript}'
 
-        traduccion.appendChild(texto)
+        // traduccion.appendChild(texto)
     }
 }
