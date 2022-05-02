@@ -19,8 +19,8 @@ microfono.addEventListener('click',ejecutarMicrofono);
    
 // }
 
-function ejecutarMicrofono() {
-
+function ejecutarMicrofono(e) {
+     e.preventDefault();
     const speechRecognition = webkitSpeechRecognition;
     const recognition = new speechRecognition()
 
