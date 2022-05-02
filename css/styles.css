@@ -105,21 +105,34 @@ img {
   margin: 0;
   font-size: 2rem;
 }
+
+@media (max-width: 768px){
+  .slogan h1{
+    text-align: center;
+    font-size: 2.8rem;
+  }
+  
+  .slogan p{
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
 .traductor {
   /* margin: 5rem 2rem; */
   display: flex;
   flex-direction: row;
-  width: 100%;
-  border: 1px solid var(--negro);
+  /* width: 100%; */
+  /* border: 1px solid var(--negro); */
 }
 
 .microfono {
   display: flex;
   font-size: 4rem;
-  /* border: 1px solid var(--negro); */
+  border: 1px solid var(--negro);
   color: #111111;
   padding: 1rem;
   width: 100%;
+  flex: 1;
 }
 .microfono::before {
   content: "";
@@ -155,6 +168,8 @@ img {
   border: 1px solid var(--negro);
   padding: 30px;
   width: 100%;
+  flex-basis: 2;
+  /* flex: 1; */
 }
 
 .footer {
@@ -180,10 +195,22 @@ img {
     width: 100%;
   } */
 
-  /* .traductor {
+  .microfono{
+    flex: 0;
+  }
+
+  .footer .copyright{
+    font-size: 1.8rem;
+  }
+
+}
+
+@media (max-width: 536px){
+  .traductor{
     display: flex;
-    flex-direction: row;
-    width: 65%;
-    border: 1px solid var(--negro);
-  } */
+    flex-direction: column;
+  }
+  .footer .copyright{
+    font-size: 1.5rem;
+  }
 }

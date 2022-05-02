@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 microfono.addEventListener('click',ejecutarMicrofono);
 
+// function ejecutarMicrofono(e) {
+//     e.preventDefault()
+//     escuchando.classList.add('mostrar')
+//     setTimeout(() => {
+//                         escuchando.classList.remove('mostrar')
+//                     }, 3000);
+   
+// }
+
 function ejecutarMicrofono() {
 
     const speechRecognition = webkitSpeechRecognition;
@@ -25,13 +34,24 @@ function ejecutarMicrofono() {
            if(Notification.permission === 'granted'){
                new Notification('Termino la grabacion')
            }
+
+
+
+        escuchando.textContent= 'se dejo de grabar'
+
+            setTimeout(() => {
+                escuchando.classList.remove('mostrar')
+            }, 3000);
+      
         recognition.stop();
     }
 
     recognition.onresult = function(e){
+
+        const {confidence, transcript} = e.results[0] [0];
         const traduccion = document.querySelector('.traduccion')
         const texto = document.createElement('p');
-        texto.textContent = e.results;
+        texto.textContent = '${transcript}'
 
         traduccion.appendChild(texto)
     }
