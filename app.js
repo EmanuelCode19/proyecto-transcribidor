@@ -1,11 +1,11 @@
 const microfono = document.querySelector('#microfono')
 const escuchando = document.querySelector('#escuchando')
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     Notification
-//        .requestPermission()
-//        .then()
-// })
+document.addEventListener('DOMContentLoaded', () => {
+    Notification
+       .requestPermission()
+       .then()
+})
 
 
 microfono.addEventListener('click',ejecutarMicrofono);
@@ -22,9 +22,9 @@ function ejecutarMicrofono(e) {
     }
 
     recognition.onspeechend = function() {
-        //    if(Notification.permission === 'granted'){
-        //        new Notification('Termino la grabacion')
-        //    }
+           if(Notification.permission === 'granted'){
+               new Notification('Termino la grabacion')
+           }
              
            escuchando.textContent= 'se dejo de grabar'
 
