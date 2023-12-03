@@ -20,6 +20,7 @@ function ejecutarMicrofono(e) {
 
     recognition.onstart = function() {
        escuchando.classList.add('mostrar')
+       escuchando.textContent= 'escuchando......'
        texto.textContent=''
     }
 
@@ -32,7 +33,7 @@ function ejecutarMicrofono(e) {
 
             setTimeout(() => {
                 escuchando.classList.remove('mostrar')
-                escuchando.textContent= 'escuchando......'
+                escuchando.textContent=''
             }, 3000);
       
         recognition.stop();
