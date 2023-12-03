@@ -1,5 +1,6 @@
 const microfono = document.querySelector('#microfono')
 const escuchando = document.querySelector('#escuchando')
+const texto = document.createElement('p');
 
 document.addEventListener('DOMContentLoaded', () => {
     Notification
@@ -19,6 +20,7 @@ function ejecutarMicrofono(e) {
 
     recognition.onstart = function() {
        escuchando.classList.add('mostrar')
+       texto.textContent=''
     }
 
     recognition.onspeechend = function() {
@@ -26,23 +28,21 @@ function ejecutarMicrofono(e) {
                new Notification('Termino la grabacion')
            }
              
-           escuchando.textContent= 'se dejo de grabar'
+           escuchando.textContent= ''
 
             setTimeout(() => {
                 escuchando.classList.remove('mostrar')
+                escuchando.textContent= 'escuchando......'
             }, 3000);
       
         recognition.stop();
     }
 
     recognition.onresult = function(e){
+        const {confidence, transcript} = e.results[0] [0];
+        const traduccion = document.querySelector('.traduccion')
+        texto.textContent = `${transcript}`
 
-        console.log(e.results)
-        // const {confidence, transcript} = e.results[0] [0];
-        // const traduccion = document.querySelector('.traduccion')
-        // const texto = document.createElement('p');
-        // texto.textContent = '${transcript}'
-
-        // traduccion.appendChild(texto)
+        traduccion.appendChild(texto)
     }
 }
