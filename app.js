@@ -29,7 +29,7 @@ function ejecutarMicrofono(e) {
                new Notification('Termino la grabacion')
            }
              
-           escuchando.textContent= 'Termino de grabar'
+           escuchando.textContent= ''
 
             setTimeout(() => {
                 escuchando.classList.remove('mostrar')
