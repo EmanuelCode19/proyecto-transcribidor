@@ -29,11 +29,10 @@ function ejecutarMicrofono(e) {
                new Notification('Termino la grabacion')
            }
              
-           escuchando.textContent= ''
+           escuchando.textContent= 'Termino de grabar'
 
             setTimeout(() => {
                 escuchando.classList.remove('mostrar')
-                escuchando.textContent=''
             }, 3000);
       
         recognition.stop();
